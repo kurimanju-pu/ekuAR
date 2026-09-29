@@ -1,75 +1,30 @@
 <!doctype html>
-<html lang="ja">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="ja"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>裸次郎 AR</title>
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js"></script>
 <style>
 body{margin:0;background:#111;color:#fff;font-family:system-ui,-apple-system,sans-serif}
-main{max-width:760px;margin:auto;padding:20px}
-h1{text-align:center}
+main{max-width:760px;margin:auto;padding:20px}h1{text-align:center}
 .choices{display:flex;gap:12px;justify-content:center;margin:16px 0;flex-wrap:wrap}
 .choices button,.arlink{font-size:18px;font-weight:700;padding:14px 20px;border:0;border-radius:14px;cursor:pointer}
 .choices button.active{outline:3px solid #fff}
 model-viewer{width:100%;height:60vh;min-height:400px;background:#222;border-radius:18px}
-.actions{text-align:center;margin-top:16px}
-.arlink{display:inline-block;background:#fff;color:#111;text-decoration:none}
+.actions{text-align:center;margin-top:16px}.arlink{display:inline-block;background:#fff;color:#111;text-decoration:none}
 .note{text-align:center;color:#bbb;font-size:14px}
-</style>
-</head>
-<body>
-<main>
+</style></head><body><main>
 <h1>裸次郎 AR</h1>
-
 <div class="choices">
 <button id="pose" class="active" type="button">通常ポーズ</button>
 <button id="ridicule" type="button">嘲笑モーション</button>
 </div>
-
-<model-viewer id="viewer"
- src="hadakajiro_pose.glb"
- alt="裸次郎"
- camera-controls
- autoplay
- ar
- ar-modes="webxr scene-viewer">
-</model-viewer>
-
-<div class="actions">
-<a id="arLink" class="arlink" rel="ar" href="hadakajiro_pose.usdz">
-<img alt="" style="display:none">
-ARで表示
-</a>
-</div>
-
+<model-viewer id="viewer" src="hadakajiro_pose.glb" alt="裸次郎" camera-controls autoplay ar ar-modes="webxr scene-viewer"></model-viewer>
+<div class="actions"><a id="arLink" class="arlink" rel="ar" href="hadakajiro_pose.usdz"><img alt="" style="display:none">ARで表示</a></div>
 <p id="modeName" class="note">通常ポーズ</p>
 </main>
-
 <script>
-const viewer=document.getElementById('viewer');
-const arLink=document.getElementById('arLink');
-const pose=document.getElementById('pose');
-const ridicule=document.getElementById('ridicule');
-const modeName=document.getElementById('modeName');
-
-function selectMode(button, glb, usdz, label){
-  pose.classList.remove('active');
-  ridicule.classList.remove('active');
-  button.classList.add('active');
-  viewer.src=glb;
-  arLink.href=usdz;
-  modeName.textContent=label;
-}
-
-pose.addEventListener('click',()=>{
-  selectMode(pose,'hadakajiro_pose.glb','hadakajiro_pose.usdz','通常ポーズ');
-});
-
-ridicule.addEventListener('click',()=>{
-  selectMode(ridicule,'Destroyer_SocialMotion_Ridicule.glb',
-    'Destroyer_SocialMotion_Ridicule(1).usdz','嘲笑モーション');
-});
-</script>
-</body>
-</html>
+const v=document.getElementById('viewer'),a=document.getElementById('arLink'),p=document.getElementById('pose'),r=document.getElementById('ridicule'),n=document.getElementById('modeName');
+function sel(b,g,u,l){p.classList.remove('active');r.classList.remove('active');b.classList.add('active');v.src=g;a.href=u;n.textContent=l}
+p.addEventListener('click',()=>sel(p,'hadakajiro_pose.glb','hadakajiro_pose.usdz','通常ポーズ'));
+r.addEventListener('click',()=>sel(r,'Destroyer_SocialMotion_Ridicule.glb','Destroyer_SocialMotion_Ridicule.usdz','嘲笑モーション'));
+</script></body></html>
